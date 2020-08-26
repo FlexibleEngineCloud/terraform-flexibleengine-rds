@@ -10,7 +10,7 @@ Available datastore are:
 More details about supported version in followed link https://www.terraform.io/docs/providers/flexibleengine/d/rds_flavors_v1.html
 
 
-## TF version : 0.12
+## TF version : 0.13
 
 ## Usage : Terraform
 
