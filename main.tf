@@ -1,8 +1,3 @@
-terraform {
-  required_version = ">= 0.12.0"
-}
-
-
 data "flexibleengine_vpc_v1" "vpc" {
   name = var.vpc_name
 }
