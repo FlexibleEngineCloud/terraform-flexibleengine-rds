@@ -1,3 +1,9 @@
+# RDS id mandatory to be able to create read replicas
+output "id" {
+  description = "Instance id"
+  value       = flexibleengine_rds_instance_v3.instance.id
+}
+
 output "nodes" {
   description = "List of RDS nodes"
   value       = flexibleengine_rds_instance_v3.instance.nodes
