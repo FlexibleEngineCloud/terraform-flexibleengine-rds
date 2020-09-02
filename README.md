@@ -81,30 +81,35 @@ Exemple : if you are using the flavor rds.mysql.s1.medium, the HA flavor is rds.
 
 Refer to [the FE RDS Documentation](https://docs.prod-cloud-ocb.orange-business.com/usermanual/rds/en-us_topic_dashboard.html)	
 
-## Inputs	
+## Inputs
 
-| Name | Description | Type | Default | Required |	
-|------|-------------|:----:|:-----:|:-----:|	
-| db\_backup\_keepdays | keep days of database backup | string | `0` | no |	
-| db\_backup\_starttime | Range of start time of database backup (Exemple : 08:00-09:00) | string | `` | no |	
-| db\_flavor | Flavor of database. Check Terraform and FE documentation to get flavor list | string | `` | yes |	
-| db\_root\_password | root password of RDS | string | `` | yes |	
-| db\_sg | name of RDS security group | string | `` | yes |	
-| db\_tcp\_port | TCP port of database | string | `` | yes |	
-| db\_type | Type of database. Can be MySQL, PostgreSQL, SQLServer | string | `` | yes |	
-| db\_version | Version of database. Check Terraform and FE documentation to get version list | string | `` | yes |	
-| rds\_ha\_enable | To enable HA of RDS | string | `false` | no |	
-| rds\_ha\_replicamode | To enable HA of RDS | string | `` | no |	
-| rds\_instance\_az | Availability zones of RDS instance (Multiple AZ must be specified if you are using HA) | list(string) | `[eu-west-0a]` | no |	
-| rds\_instance\_name | name of RDS instances | string | `` | yes |	
-| rds\_instance\_volume\_size | Volume size of instances | string | `0` | yes |	
-| rds\_instance\_volume\_type | Volume type of instances | string | `COMMON` | no |	
-| subnet\_name | Name of the data subnet | string | `` | yes |	
-| vpc\_name | Name of the VPC | string | `` | yes |	
-## Outputs	
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| db\_backup\_keepdays | keep days of database backup | `number` | `3` | no |
+| db\_backup\_starttime | start time of database backup (Exemple : 08:00-09:00) | `string` | `"01:00-02:00"` | no |
+| db\_flavor | Flavor of database. Check Terraform and FE documentation to get flavor list | `string` | `""` | no |
+| db\_root\_password | root password of RDS | `string` | `""` | no |
+| db\_sg | name of RDS security group to create | `string` | `""` | no |
+| db\_tcp\_port | TCP port of database | `string` | `""` | no |
+| db\_type | Type of database. Can be MySQL, PostgreSQL, SQLServer | `string` | `""` | no |
+| db\_version | Version of database. Check Terraform and FE documentation to get version list | `string` | `""` | no |
+| rds\_ha\_enable | To enable HA of RDS | `bool` | `false` | no |
+| rds\_ha\_replicamode | To enable HA of RDS | `string` | `""` | no |
+| rds\_instance\_az | Availability zones of RDS instance (Multiple AZ must be specified if you are using HA) | `list(string)` | <pre>[<br>  "eu-west-0a"<br>]</pre> | no |
+| rds\_instance\_name | name of RDS instances | `string` | `""` | no |
+| rds\_instance\_volume\_encryption\_id | KMS Key id for encryption | `string` | `null` | no |
+| rds\_instance\_volume\_size | Volume size of instances | `number` | `0` | no |
+| rds\_instance\_volume\_type | Volume type of instances | `string` | `"COMMON"` | no |
+| rds\_read\_replicat\_list | n/a | <pre>list(object({<br>    name               = string<br>    flavor             = string<br>    availability_zone  = string<br>    volume_type        = string<br>    disk_encryption_id = string<br>  }))</pre> | n/a | yes |
+| subnet\_name | Name of the data subnet | `string` | `""` | no |
+| vpc\_name | Name of the VPC | `string` | `""` | no |
 
-| Name | Description |	
-|------|-------------|	
-| nodes | List of RDS nodes |	
-| private_ips | Private IP address list of nodes |	
-| public_ips | Public IP address list of nodes |
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| id | Instance id |
+| nodes | List of RDS nodes |
+| private\_ips | Private IP address list of nodes |
+| public\_ips | Public IP address list of nodes |
+
