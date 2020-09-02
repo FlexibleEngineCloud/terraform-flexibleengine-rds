@@ -83,8 +83,24 @@ variable "rds_instance_volume_size" {
   type        = number
 }
 
+variable "rds_instance_volume_encryption_id" {
+  description = "KMS Key id for encryption"
+  default     = null
+  type        = string
+}
+
 variable "rds_instance_az" {
   description = "Availability zones of RDS instance (Multiple AZ must be specified if you are using HA)"
   default     = ["eu-west-0a"]
   type        = list(string)
+}
+
+variable "rds_read_replicat_list" {
+  type = list(object({
+    name               = string
+    flavor             = string
+    availability_zone  = string
+    volume_type        = string
+    disk_encryption_id = string
+  }))
 }
