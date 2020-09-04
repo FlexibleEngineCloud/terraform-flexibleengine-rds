@@ -16,7 +16,7 @@ More details about supported version in followed link https://www.terraform.io/d
 
 ```hcl	
 module "rds" {	
-  source = "terraform-flexibleengine-modules/rds/flexibleengine"	
+  source = "FlexibleEngineCloud/rds/flexibleengine"	
   version = "1.0.0"	
   vpc_name    = "vpc-main"	
   subnet_name = "subnet-cce"	
