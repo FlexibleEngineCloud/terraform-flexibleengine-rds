@@ -13,8 +13,8 @@ variable "db_flavor" {
   default     = ""
 }
 
-variable "db_sg" {
-  description = "name of RDS security group to create"
+variable "secgroup_id" {
+  description = "Security group ID to use for RDS"
   default     = ""
 }
 
@@ -53,8 +53,8 @@ variable "rds_ha_replicamode" {
   type        = string
 }
 
-variable "subnet_name" {
-  description = "Name of the data subnet"
+variable "subnet_id" {
+  description = "ID of the subnet"
   default     = ""
   type        = string
 }

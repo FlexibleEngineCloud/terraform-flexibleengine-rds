@@ -1,11 +1,3 @@
-data "flexibleengine_vpc_subnet_v1" "subnet_v1" {
-  name = var.subnet_name
-}
-
-data "flexibleengine_networking_secgroup_v2" "secgrp_rds" {
-  name = var.db_sg
-}
-
 resource "flexibleengine_rds_instance_v3" "instance" {
   availability_zone = var.rds_instance_az
   db {
@@ -15,8 +7,8 @@ resource "flexibleengine_rds_instance_v3" "instance" {
     port     = var.db_tcp_port
   }
   name              = var.rds_instance_name
-  security_group_id = data.flexibleengine_networking_secgroup_v2.secgrp_rds.id
-  subnet_id         = data.flexibleengine_vpc_subnet_v1.subnet_v1.id
+  security_group_id = var.secgroup_id
+  subnet_id         = var.subnet_id
   vpc_id            = var.vpc_id
   volume {
     type               = var.rds_instance_volume_type

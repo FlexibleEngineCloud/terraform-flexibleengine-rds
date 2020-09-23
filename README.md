@@ -89,7 +89,7 @@ Refer to [the FE RDS Documentation](https://docs.prod-cloud-ocb.orange-business.
 | db\_backup\_starttime | start time of database backup (Exemple : 08:00-09:00) | `string` | `"01:00-02:00"` | no |
 | db\_flavor | Flavor of database. Check Terraform and FE documentation to get flavor list | `string` | `""` | no |
 | db\_root\_password | root password of RDS | `string` | `""` | no |
-| db\_sg | name of RDS security group to create | `string` | `""` | no |
+| secgroup_id | Security group id to use for RDS | `string` | `""` | no |
 | db\_tcp\_port | TCP port of database | `string` | `""` | no |
 | db\_type | Type of database. Can be MySQL, PostgreSQL, SQLServer | `string` | `""` | no |
 | db\_version | Version of database. Check Terraform and FE documentation to get version list | `string` | `""` | no |
@@ -101,7 +101,7 @@ Refer to [the FE RDS Documentation](https://docs.prod-cloud-ocb.orange-business.
 | rds\_instance\_volume\_size | Volume size of instances | `number` | `0` | no |
 | rds\_instance\_volume\_type | Volume type of instances | `string` | `"COMMON"` | no |
 | rds\_read\_replicat\_list | n/a | <pre>list(object({<br>    name               = string<br>    flavor             = string<br>    availability_zone  = string<br>    volume_type        = string<br>    disk_encryption_id = string<br>  }))</pre> | n/a | yes |
-| subnet\_name | Name of the data subnet | `string` | `""` | no |
+| subnet\_id | ID of the subnet | `string` | `""` | no |
 | vpc\_id | ID of the VPC | `string` | `null` | no |
 
 ## Outputs
