@@ -103,6 +103,7 @@ Refer to [the FE RDS Documentation](https://docs.prod-cloud-ocb.orange-business.
 | rds\_read\_replicat\_list | n/a | <pre>list(object({<br>    name               = string<br>    flavor             = string<br>    availability_zone  = string<br>    volume_type        = string<br>    disk_encryption_id = string<br>  }))</pre> | n/a | yes |
 | subnet\_name | Name of the data subnet | `string` | `""` | no |
 | vpc\_name | Name of the VPC | `string` | `""` | no |
+| vpc\_id | ID of the VPC | `string` | `null` | no |
 
 ## Outputs
 

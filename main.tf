@@ -21,7 +21,7 @@ resource "flexibleengine_rds_instance_v3" "instance" {
   name              = var.rds_instance_name
   security_group_id = data.flexibleengine_networking_secgroup_v2.secgrp_rds.id
   subnet_id         = data.flexibleengine_vpc_subnet_v1.subnet_v1.id
-  vpc_id            = data.flexibleengine_vpc_v1.vpc.id
+  vpc_id            = var.vpc_id != null ? var.vpc_id : data.flexibleengine_vpc_v1.vpc.id
   volume {
     type               = var.rds_instance_volume_type
     size               = var.rds_instance_volume_size

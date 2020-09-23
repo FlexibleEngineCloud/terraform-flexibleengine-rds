@@ -65,6 +65,12 @@ variable "vpc_name" {
   type        = string
 }
 
+variable "vpc_id" {
+  description = "ID of the VPC"
+  default     = null
+  type        = string
+}
+
 variable "rds_instance_name" {
   description = "name of RDS instances"
   default     = ""
