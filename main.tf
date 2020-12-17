@@ -21,6 +21,8 @@ resource "flexibleengine_rds_instance_v3" "instance" {
     start_time = var.db_backup_starttime
     keep_days  = var.db_backup_keepdays
   }
+
+  param_group_id = var.rds_param_group_id
 }
 
 resource "flexibleengine_rds_read_replica_v3" "instances" {
