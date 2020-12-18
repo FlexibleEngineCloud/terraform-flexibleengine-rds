@@ -1,7 +1,7 @@
 module "rds_sg" {
   source  = "FlexibleEngineCloud/secgroup/flexibleengine"
   version = "2.0.1"
-  
+
   name        = "mysql-rds-test"
   description = "Security group for CCE MySQL RDS"
 
@@ -17,14 +17,14 @@ module "rds_sg" {
 }
 
 resource "flexibleengine_rds_parametergroup_v3" "rds_parametergroup" {
-  name = "mysql-rds-test-pg"
+  name        = "mysql-rds-test-pg"
   description = "Set time_zone parameter of RDS"
   values = {
-    time_zone = "Europe/Paris"
+    time_zone              = "Europe/Paris"
     lower_case_table_names = "0"
   }
   datastore {
-    type = "mysql"
+    type    = "mysql"
     version = "5.6"
   }
 }
