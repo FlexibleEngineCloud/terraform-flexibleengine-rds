@@ -7,7 +7,7 @@ Available datastore are:
 * MySQL	
 * SQLServer	
 
-More details about supported version in followed link https://www.terraform.io/docs/providers/flexibleengine/d/rds_flavors_v1.html	
+More details about supported version in followed link https://registry.terraform.io/providers/FlexibleEngineCloud/flexibleengine/latest/docs/resources/rds_instance_v3	
 
 
 ## TF version : 0.13	
@@ -100,6 +100,7 @@ Refer to [the FE RDS Documentation](https://docs.prod-cloud-ocb.orange-business.
 | rds\_instance\_volume\_encryption\_id | KMS Key id for encryption | `string` | `null` | no |
 | rds\_instance\_volume\_size | Volume size of instances | `number` | `0` | no |
 | rds\_instance\_volume\_type | Volume type of instances | `string` | `"COMMON"` | no |
+| rds\_param\_group\_id | Parameters Group ID | `string` | `null` | no |
 | rds\_read\_replicat\_list | n/a | <pre>list(object({<br>    name               = string<br>    flavor             = string<br>    availability_zone  = string<br>    volume_type        = string<br>    disk_encryption_id = string<br>  }))</pre> | n/a | yes |
 | subnet\_id | ID of the subnet | `string` | `""` | no |
 | vpc\_id | ID of the VPC | `string` | `null` | no |

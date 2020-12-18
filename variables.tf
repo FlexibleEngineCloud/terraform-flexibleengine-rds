@@ -104,3 +104,9 @@ variable "rds_read_replicat_list" {
     disk_encryption_id = string
   }))
 }
+
+variable "rds_param_group_id" {
+  description = "Parameters Group ID"
+  default     = null
+  type        = string
+}
