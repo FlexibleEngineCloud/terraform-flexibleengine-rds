@@ -8,16 +8,6 @@ resource "flexibleengine_rds_parametergroup_v3" "parametergroup" {
     version = var.db_version
   }
 }
-resource "flexibleengine_rds_parametergroup_v3" "parametergroup" {
-  count       = length(var.rds_parametergroup_values) > 0 ? 1 : 0
-  name        = "parametergroup-${var.rds_instance_name}"
-  description = "RDS Parameter Group"
-  values      = var.rds_parametergroup_values
-  datastore {
-    type    = var.db_type
-    version = var.db_version
-  }
-}
 resource "flexibleengine_rds_instance_v3" "instance" {
   availability_zone = var.rds_instance_az
   db {
