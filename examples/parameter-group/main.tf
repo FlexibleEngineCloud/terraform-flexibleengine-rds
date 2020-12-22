@@ -16,22 +16,9 @@ module "rds_sg" {
   ]
 }
 
-resource "flexibleengine_rds_parametergroup_v3" "rds_parametergroup" {
-  name        = "mysql-rds-test-pg"
-  description = "Set time_zone parameter of RDS"
-  values = {
-    time_zone              = "Europe/Paris"
-    lower_case_table_names = "0"
-  }
-  datastore {
-    type    = "mysql"
-    version = "5.6"
-  }
-}
-
 module "rds" {
-  source  = "terraform-flexibleengine-modules/rds/flexibleengine"
-  version = "1.0.0"
+  source  = "FlexibleEngineCloud/rds/flexibleengine"
+  version = "2.1.5"
 
   vpc_name    = "vpc-main"
   subnet_name = "subnet-cce"
@@ -53,8 +40,11 @@ module "rds" {
   rds_instance_volume_size = 100
   rds_instance_az          = ["eu-west-0a"]
 
-  rds_param_group_id = flexibleengine_rds_parametergroup_v3.rds_parametergroup.id
+  rds_parametergroup_values = {
+    time_zone              = "Europe/Paris"
+    lower_case_table_names = "0"
+  }
 
-  depends_on = [module.rds_sg, flexibleengine_rds_parametergroup_v3.rds_parametergroup]
+  depends_on = [module.rds_sg]
 
 }

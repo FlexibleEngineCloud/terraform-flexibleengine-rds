@@ -1,3 +1,13 @@
+resource "flexibleengine_rds_parametergroup_v3" "parametergroup" {
+  count       = length(var.rds_parametergroup_values) > 0 ? 1 : 0
+  name        = "parametergroup-${var.rds_instance_name}"
+  description = "RDS Parameter Group"
+  values      = var.rds_parametergroup_values
+  datastore {
+    type    = var.db_type
+    version = var.db_version
+  }
+}
 resource "flexibleengine_rds_instance_v3" "instance" {
   availability_zone = var.rds_instance_az
   db {
@@ -22,7 +32,7 @@ resource "flexibleengine_rds_instance_v3" "instance" {
     keep_days  = var.db_backup_keepdays
   }
 
-  param_group_id = var.rds_param_group_id
+  param_group_id = length(var.rds_parametergroup_values) > 0 ? flexibleengine_rds_parametergroup_v3.parametergroup.*.id[0] : null
 }
 
 resource "flexibleengine_rds_read_replica_v3" "instances" {

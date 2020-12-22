@@ -105,8 +105,8 @@ variable "rds_read_replicat_list" {
   }))
 }
 
-variable "rds_param_group_id" {
-  description = "Parameters Group ID"
-  default     = null
-  type        = string
+variable "rds_parametergroup_values" {
+  description = "Map of the values of the parameter group"
+  type        = map(string)
+  default     = {}
 }
