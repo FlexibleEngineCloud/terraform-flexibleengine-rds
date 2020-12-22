@@ -106,7 +106,7 @@ variable "rds_read_replicat_list" {
 }
 
 variable "rds_parametergroup_values" {
-  description = "Map of the values of the paramter group"
+  description = "Map of the values of the parameter group"
   type        = map(string)
   default     = {}
 }
