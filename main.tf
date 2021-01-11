@@ -4,7 +4,7 @@ resource "flexibleengine_rds_parametergroup_v3" "parametergroup" {
   description = "RDS Parameter Group"
   values      = var.rds_parametergroup_values
   datastore {
-    type    = var.db_type
+    type    = lower(var.db_type)
     version = var.db_version
   }
 }
